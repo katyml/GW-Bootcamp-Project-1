@@ -67,7 +67,6 @@ The playbook implements the following tasks:
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 ![sudo docker ps](https://user-images.githubusercontent.com/74930788/139750728-eaf64e2a-ce4c-4d49-aa17-f54fb759e1da.png)
-(Images/docker_ps_output.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -79,8 +78,8 @@ We have installed the following Beats on these machines:
 - Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- Filebeat 
-
+- Filebeat maintains system log information. Below is an example of Filebeat's display for SSH logins. ![ExFilebeat](https://user-images.githubusercontent.com/74930788/140006473-fdf3ea70-2398-4de1-bba1-3773841d0b54.png)
+- Metricbeat collects metrics on operating systems and services running on the server. Below is an example of Metricbeat's metrics for CPU and memory usage. ![ExMetricbeat](https://user-images.githubusercontent.com/74930788/140006759-ba7f1670-7508-4bff-9bba-7783ce6c4499.png)
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -89,5 +88,3 @@ SSH into the control node and follow the steps below:
 - Copy the elk_install.yml file to /etc/ansible/roles/elk_install.yml.
 - Update the hosts file to include groups. These groups consist of IP addresses for virtual machines and can be used to distinguish which machines you want a specific playbook to run on. In this case, "[webservers]" are the group where Filebeat and Metricbeat will be installed on, whereas "[elk]" will have the ELK server installed on it.
 - Run the playbook, and navigate to your htttp://[your-elk-server-ip]:5601/app/kibana to check that the installation worked as expected.
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
